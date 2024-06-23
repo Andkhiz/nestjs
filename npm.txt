@@ -5,3 +5,6 @@ npm install --save sequelize sequelize-typescript pg
 npm install --save-dev @types/sequelize
 npm install --save @nestjs/sequelize
 npm install --save @nestjs/swagger
+npm i --save class-validator class-transformer
+npm i bcrypt
+npm i -D @types/bcrypt
