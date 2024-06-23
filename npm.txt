@@ -1,0 +1,6 @@
+npm i -g @nestjs/cli
+nest new project-name -- создание проекта
+npm i --save @nestjs/config
+npm install --save sequelize sequelize-typescript pg
+npm install --save-dev @types/sequelize
+npm install --save @nestjs/sequelize
