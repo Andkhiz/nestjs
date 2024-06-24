@@ -5,20 +5,25 @@ import { AppError } from 'src/common/const/errors';
 import { UserLoginDTO } from './dto';
 import * as bcrypt from 'bcrypt';
 import { AuthUserResponse } from './response';
+import { TokenService } from '../token/token.service';
 
 @Injectable()
 export class AuthService {
-  constructor(private readonly userServise: UserService) {}
+  constructor(
+    private readonly userServise: UserService,
+    private readonly tokenServise: TokenService,
+  ) {}
 
-  async registrationUser(dto: CreateUserDTO): Promise<AuthUserResponse> {
+  async registrationUser(dto: CreateUserDTO): Promise<CreateUserDTO> {
     const existUser = await this.userServise.findUserByEmail(dto.email);
     if (existUser) throw new BadRequestException(AppError.USER_EXIST);
-    return this.userServise.createUser(dto);
+    const user = this.userServise.createUser(dto);
+    //const token = await this.tokenServise.generateJwtToken(dto.email);
+    return user;
   }
 
   async loginUser(dto: UserLoginDTO): Promise<AuthUserResponse> {
     const existUser = await this.userServise.findUserByEmail(dto.email);
-
     if (!existUser) throw new BadRequestException(AppError.WRONG_USER_DATA);
 
     const validatePassword = await bcrypt.compare(
@@ -28,7 +33,7 @@ export class AuthService {
 
     if (!validatePassword)
       throw new BadRequestException(AppError.WRONG_USER_DATA);
-
-    return existUser;
+    const token = await this.tokenServise.generateJwtToken(existUser.email);
+    return { ...existUser, token };
   }
 }
