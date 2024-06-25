@@ -29,4 +29,11 @@ export class UserService {
     await this.UserRepository.create({ ...dto });
     return dto;
   }
+
+  async publicUser(email: string) {
+    return this.UserRepository.findOne({
+      where: { email },
+      attributes: { exclude: ['password'] },
+    });
+  }
 }
