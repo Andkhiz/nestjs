@@ -26,14 +26,16 @@ export class AuthService {
     const existUser = await this.userServise.findUserByEmail(dto.email);
     if (!existUser) throw new BadRequestException(AppError.WRONG_USER_DATA);
 
-    const validatePassword = await bcrypt.compare(
-      dto.password,
-      existUser.password,
-    );
+    const validatePassword = await bcrypt.compare(dto.password, existUser.password);
 
-    if (!validatePassword)
-      throw new BadRequestException(AppError.WRONG_USER_DATA);
-    const token = await this.tokenServise.generateJwtToken(existUser.email);
+    if (!validatePassword) throw new BadRequestException(AppError.WRONG_USER_DATA);
+
+    const userData = {
+      id: existUser.id,
+      name: existUser.firstname,
+      email: existUser.email,
+    };
+    const token = await this.tokenServise.generateJwtToken(userData);
     const publicUser = await this.userServise.publicUser(existUser.email);
     return { ...publicUser, token };
   }
