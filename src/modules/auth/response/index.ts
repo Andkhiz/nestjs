@@ -1,22 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
+import { ResponseUserDTO } from 'src/modules/user/dto';
 
 export class AuthUserResponse {
   @ApiProperty()
-  @IsString()
-  firstname: string;
-
-  @ApiProperty()
-  @IsString()
-  username: string;
-
-  @ApiProperty()
-  @IsString()
-  email: string;
-
-  @ApiProperty()
-  @IsString()
-  password: string;
+  user: ResponseUserDTO;
 
   @ApiProperty()
   @IsString()
