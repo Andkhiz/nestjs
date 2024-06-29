@@ -1,4 +1,4 @@
-# nestjs
+# Nest
 <p align="center">
   <a href="https://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
@@ -24,6 +24,66 @@
 
 ## Description
 
-Nest is a framework for building efficient, scalable <a href="https://nodejs.org" target="_blank">Node.js</a> server-side applications. It uses modern JavaScript, is built with <a href="https://www.typescriptlang.org" target="_blank">TypeScript</a> (preserves compatibility with pure JavaScript) and combines elements of OOP (Object Oriented Programming), FP (Functional Programming), and FRP (Functional Reactive Programming).
+This backend API is built using NestJS and provides functionalities for user registration and management of watchlists. Users can register, log in, and manage their watchlists, which consist of various assets they wish to track.
 
-<p>Under the hood, Nest makes use of <a href="https://expressjs.com/" target="_blank">Express</a>, but also provides compatibility with a wide range of other libraries, like <a href="https://github.com/fastify/fastify" target="_blank">Fastify</a>, allowing for easy use of the myriad of third-party plugins which are available.</p>
+## Features
+
+- **User Registration**: Allow users to create a new account.
+- **User Authentication**: Users can log in to their account and receive a JWT token.
+- **Watchlist Management**: Users can add, view, and manage their watchlists.
+- **API Documentation**: Comprehensive API documentation available through Swagger.
+
+## Setup and Installation
+
+1. Clone the repository:
+```
+git clone https://github.com/Andkhiz/nestjs.git
+cd nestjs
+```
+
+2. Install dependencies:
+```
+npm install
+```
+or
+```
+npm ci
+```
+
+3. Setup and Installation Docker. Run Docker Compose and run docker container:
+```
+docker-compose up
+```
+
+4. Set up environment variables:
+Create a `.env` file in the root directory and add the following:
+```
+PORT=yuor_backend_port
+DB_PODR=your_database_port
+DB_HOST=your_database_host
+DB_USER=your_database_user
+DB_PASSWORD=your_database_password
+DB_NAME=your_database_name
+SECRET=your_jwt_secret
+EXPIRE_JWT=your_jwt_secret_expire
+```
+
+5. Start the server:
+```
+npm run start
+```
+
+## Technologies Used
+
+- **NestJS**: A progressive Node.js framework for building efficient and scalable server-side applications.
+- **Sequelize**: An ORM for TypeScript and JavaScript (ES7, ES6, ES5).
+- **PostgreSQL**: A powerful, open-source object-relational database system.
+- **Swagger**: API documentation and testing.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request for review.
+
+## License
+
+This project is licensed under the [MIT licensed](LICENSE). See the LICENSE file for details.
