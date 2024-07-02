@@ -50,8 +50,9 @@ or
 npm ci
 ```
 
-3. Setup and Installation Docker. Run Docker Compose and run docker container:
+3. Setup and Installation Docker. Run Docker Compose and run docker container in test folder:
 ```
+cd test
 docker-compose up
 ```
 
@@ -72,6 +73,15 @@ EXPIRE_JWT=your_jwt_secret_expire
 ```
 npm run start
 ```
+
+## Deployment 
+
+Build the project and create an image in docker.
+```
+npm run build
+docker-compose up
+```
+
 
 ## Technologies Used
 
